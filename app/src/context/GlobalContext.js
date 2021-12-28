@@ -5,11 +5,11 @@ import PropTypes from 'prop-types';
 const GlobalContext = createContext();
 
 export const GlobalStorage = ({ children }) => {
-  const [estado, setEstado] = React.useState();
+  const [search, setSearch] = React.useState();
 
   const payload = {
-    estado,
-    setEstado,
+    search,
+    setSearch,
   };
 
   return (
