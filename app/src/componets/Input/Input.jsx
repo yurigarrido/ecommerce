@@ -1,16 +1,33 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Input = ({ placeholder, text, onChange, value }) => {
-  return (
-    <input
-      placeholder={placeholder}
-      onChange={({ target }) => onChange(target.value)}
-      value={value}
-    >
-      {text}
-    </input>
-  );
+const Input = ({ placeholder, text, onChange, value, categories }) => {
+  if (categories) {
+    return (
+      <select
+        onChange={({ target }) => onChange('dropdonw', target.value)}
+        name="selec"
+      >
+        {categories.map((categorie, index) => {
+          return (
+            <option value={categorie.id} key={index}>
+              {categorie.name}
+            </option>
+          );
+        })}
+      </select>
+    );
+  } else {
+    return (
+      <input
+        placeholder={placeholder}
+        onChange={({ target }) => onChange(target.value)}
+        value={value}
+      >
+        {text}
+      </input>
+    );
+  }
 };
 
 Input.propTypes = {
@@ -18,6 +35,7 @@ Input.propTypes = {
   text: PropTypes.string,
   onChange: PropTypes.string,
   value: PropTypes.string,
+  categories: PropTypes.string,
 };
 
 export default Input;
