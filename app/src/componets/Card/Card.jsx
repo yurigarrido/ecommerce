@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import GlobalContext from '../../context/GlobalContext';
 // import Button from '../Button/Button';
 
@@ -21,10 +22,12 @@ const Card = () => {
         dataCards.map((card, index) => {
           return (
             <div key={index}>
-              <div>{card.title}</div>
-              <div>{card.price}</div>
-              <div></div>
-              <img src={card.thumbnail} alt={`imagem de ${card.title}`} />
+              <Link to={`details/${card.id}`}>
+                <div>{card.title}</div>
+                <div>{card.price}</div>
+                <div></div>
+                <img src={card.thumbnail} alt={`imagem de ${card.title}`} />
+              </Link>
               <button
                 onClick={() => addToCard(card, index + Math.random() * 100)}
               >

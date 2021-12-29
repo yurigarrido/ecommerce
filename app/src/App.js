@@ -4,6 +4,7 @@ import { GlobalStorage } from './context/GlobalContext';
 import Home from './pages/Home';
 import Checkin from './pages/Checkin';
 import Payment from './pages/Payment';
+import Details from './pages/Details';
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
           <Route exact path="/" component={Home} />
           <Route path="/checkin" component={Checkin} />
           <Route path="/payment" component={Payment} />
+          <Route path="/details/:id" component={Details} />
         </Switch>
       </GlobalStorage>
     </BrowserRouter>
