@@ -5,8 +5,13 @@ import GlobalContext from '../../context/GlobalContext';
 const Card = () => {
   const { dataCards, carItems, setCarItems } = React.useContext(GlobalContext);
 
-  const addToCard = (card) => {
-    const newCard = { id: card.id, name: card.title };
+  const addToCard = (card, index) => {
+    const newCard = {
+      id: card.id,
+      title: card.title,
+      price: card.price,
+      key: index,
+    };
     carItems ? setCarItems([...carItems, newCard]) : setCarItems([newCard]);
   };
 
@@ -20,7 +25,11 @@ const Card = () => {
               <div>{card.price}</div>
               <div></div>
               <img src={card.thumbnail} alt={`imagem de ${card.title}`} />
-              <button onClick={() => addToCard(card)}>Add to Card</button>
+              <button
+                onClick={() => addToCard(card, index + Math.random() * 100)}
+              >
+                Add to Card
+              </button>
             </div>
           );
         })}

@@ -1,7 +1,12 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const ShoppingCart = () => {
-  return <div>aqui é a logo do carrinho</div>;
+  return (
+    <div>
+      <Link to="/checkin">carrinho</Link>
+    </div>
+  );
 };
 
 export default ShoppingCart;
