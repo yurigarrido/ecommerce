@@ -1,7 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Input = ({ placeholder, text, onChange, value, categories }) => {
+const Input = ({
+  placeholder,
+  text,
+  onChange,
+  value,
+  categories,
+  type = 'text',
+}) => {
   if (categories) {
     return (
       <select
@@ -19,13 +26,15 @@ const Input = ({ placeholder, text, onChange, value, categories }) => {
     );
   } else {
     return (
-      <input
-        placeholder={placeholder}
-        onChange={({ target }) => onChange(target.value)}
-        value={value}
-      >
+      <label>
         {text}
-      </input>
+        <input
+          placeholder={placeholder}
+          onChange={({ target }) => onChange(target.value)}
+          value={value}
+          type={type}
+        ></input>
+      </label>
     );
   }
 };
@@ -36,6 +45,7 @@ Input.propTypes = {
   onChange: PropTypes.string,
   value: PropTypes.string,
   categories: PropTypes.string,
+  type: PropTypes.string,
 };
 
 export default Input;

@@ -38,7 +38,7 @@ const Checkin = () => {
       </p>
       <div>
         {carItems.length >= 1 ? (
-          <Link to="payment">ir ao pagamento</Link>
+          <Link to="payment">Proximo</Link>
         ) : (
           <Link to="/">continuar comprando</Link>
         )}

@@ -1,15 +1,24 @@
-import React, { createContext } from 'react';
+import React, { createContext, useState } from 'react';
 import PropTypes from 'prop-types';
 
-// esse eu importo para usar no useContext
 const GlobalContext = createContext();
 
 export const GlobalStorage = ({ children }) => {
-  const [search, setSearch] = React.useState('');
-  const [responseCategories, setResponseCategories] = React.useState(null);
-  const [categories, setCategories] = React.useState(1);
-  const [dataCards, setDataCards] = React.useState(null);
-  const [carItems, setCarItems] = React.useState(null);
+  const [search, setSearch] = useState('');
+  const [responseCategories, setResponseCategories] = useState(null);
+  const [categories, setCategories] = useState(1);
+  const [dataCards, setDataCards] = useState(null);
+  const [carItems, setCarItems] = useState(null);
+
+  //form
+  const [name, setName] = useState(null);
+  const [lastName, setLastName] = useState(null);
+  const [email, setEmail] = useState(null);
+  const [cep, setCep] = useState(null);
+  const [log, setLog] = useState(null);
+  const [city, setCity] = useState(null);
+  const [number, setNumber] = useState(null);
+  const [payMethod, setPayMehtod] = useState(null);
 
   async function getCategories() {
     const url = 'https://api.mercadolibre.com/sites/MLB/categories';
@@ -35,6 +44,16 @@ export const GlobalStorage = ({ children }) => {
     setDataCards(json.results);
   }
 
+  const addToCard = (card, index) => {
+    const newCard = {
+      id: card.id,
+      title: card.title,
+      price: card.price,
+      key: index,
+    };
+    carItems ? setCarItems([...carItems, newCard]) : setCarItems([newCard]);
+  };
+
   React.useEffect(() => {
     getCategories();
     getProductsFromCategoryAndQuery('', '', 'acer');
@@ -50,6 +69,23 @@ export const GlobalStorage = ({ children }) => {
     dataCards,
     carItems,
     setCarItems,
+    addToCard,
+    name,
+    setName,
+    lastName,
+    setLastName,
+    email,
+    setEmail,
+    log,
+    setLog,
+    city,
+    setCity,
+    number,
+    setNumber,
+    payMethod,
+    setPayMehtod,
+    cep,
+    setCep,
   };
 
   return (

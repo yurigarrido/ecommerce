@@ -1,42 +1,37 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import * as S from './styled';
 import GlobalContext from '../../context/GlobalContext';
-// import Button from '../Button/Button';
 
 const Card = () => {
-  const { dataCards, carItems, setCarItems } = React.useContext(GlobalContext);
-
-  const addToCard = (card, index) => {
-    const newCard = {
-      id: card.id,
-      title: card.title,
-      price: card.price,
-      key: index,
-    };
-    carItems ? setCarItems([...carItems, newCard]) : setCarItems([newCard]);
-  };
+  const { dataCards, addToCard } = React.useContext(GlobalContext);
 
   return (
-    <div>
+    <S.Container>
+      {!dataCards && <p>loading...</p>}
       {dataCards &&
         dataCards.map((card, index) => {
           return (
-            <div key={index}>
+            <S.Card key={index}>
               <Link to={`details/${card.id}`}>
-                <div>{card.title}</div>
-                <div>{card.price}</div>
-                <div></div>
-                <img src={card.thumbnail} alt={`imagem de ${card.title}`} />
+                <S.Title>{card.title}</S.Title>
+                <S.Price>R$ {card.price}</S.Price>
+                <S.SubPrice>
+                  12x R$ {(+card.price / 12).toFixed(2)} sem juros
+                </S.SubPrice>
               </Link>
+              <div>
+                <img src={card.thumbnail} alt={`imagem de ${card.title}`} />
+              </div>
               <button
                 onClick={() => addToCard(card, index + Math.random() * 100)}
               >
-                Add to Card
+                adicionar ao carrinho
               </button>
-            </div>
+            </S.Card>
           );
         })}
-    </div>
+    </S.Container>
   );
 };
 

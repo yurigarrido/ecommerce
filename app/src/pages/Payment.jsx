@@ -1,7 +1,12 @@
 import React from 'react';
+import Form from '../componets/Form/Form';
 
 const Payment = () => {
-  return <div>aqui é a tela de pagamento</div>;
+  return (
+    <div>
+      <Form />
+    </div>
+  );
 };
 
 export default Payment;
