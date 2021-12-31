@@ -9,7 +9,6 @@ export const GlobalStorage = ({ children }) => {
   const [categories, setCategories] = useState(1);
   const [dataCards, setDataCards] = useState(null);
   const [carItems, setCarItems] = useState(null);
-
   //form
   const [name, setName] = useState(null);
   const [lastName, setLastName] = useState(null);
@@ -32,7 +31,7 @@ export const GlobalStorage = ({ children }) => {
   async function getProductsFromCategoryAndQuery(type, categoryId, query) {
     let url =
       'https://api.mercadolibre.com/sites/MLB/search?category=$CATEGORY_ID&q=$QUERY';
-    if (type === 'dropdonw') {
+    if (type === 'byClickButton') {
       url = `https://api.mercadolibre.com/sites/MLB/search?category=${categoryId}`;
     } else if (type === 'searchByText') {
       url = `https://api.mercadolibre.com/sites/MLB/search?q=${query}`;

@@ -15,10 +15,12 @@ const Card = () => {
             <S.Card key={index}>
               <Link to={`details/${card.id}`}>
                 <S.Title>{card.title}</S.Title>
-                <S.Price>R$ {card.price}</S.Price>
-                <S.SubPrice>
-                  12x R$ {(+card.price / 12).toFixed(2)} sem juros
-                </S.SubPrice>
+                <div>
+                  <S.Price>R$ {card.price}</S.Price>
+                  <S.SubPrice>
+                    12x R$ {(+card.price / 12).toFixed(2)} sem juros
+                  </S.SubPrice>
+                </div>
               </Link>
               <div>
                 <img src={card.thumbnail} alt={`imagem de ${card.title}`} />

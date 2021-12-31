@@ -5,6 +5,7 @@ import Home from './pages/Home';
 import Checkin from './pages/Checkin';
 import Payment from './pages/Payment';
 import Details from './pages/Details';
+import GlobalStyle from './GlobalStyle';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           <Route path="/payment" component={Payment} />
           <Route path="/details/:id" component={Details} />
         </Switch>
+        <GlobalStyle />
       </GlobalStorage>
     </BrowserRouter>
   );
