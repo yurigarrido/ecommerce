@@ -1,7 +1,26 @@
 import React from 'react';
+import { Route, Switch, BrowserRouter } from 'react-router-dom';
+import { GlobalStorage } from './context/GlobalContext';
+import Home from './pages/Home';
+import Checkin from './pages/Checkin';
+import Payment from './pages/Payment';
+import Details from './pages/Details';
+import GlobalStyle from './GlobalStyle';
 
 function App() {
-  return <div className="App">hello world!</div>;
+  return (
+    <BrowserRouter>
+      <GlobalStorage>
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <Route path="/checkin" component={Checkin} />
+          <Route path="/payment" component={Payment} />
+          <Route path="/details/:id" component={Details} />
+        </Switch>
+        <GlobalStyle />
+      </GlobalStorage>
+    </BrowserRouter>
+  );
 }
 
 export default App;
