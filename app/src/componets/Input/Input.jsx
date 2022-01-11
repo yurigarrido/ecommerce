@@ -42,7 +42,7 @@ const Input = ({
 Input.propTypes = {
   placeholder: PropTypes.string,
   text: PropTypes.string,
-  onChange: PropTypes.string,
+  onChange: PropTypes.func,
   value: PropTypes.string,
   categories: PropTypes.string,
   type: PropTypes.string,
