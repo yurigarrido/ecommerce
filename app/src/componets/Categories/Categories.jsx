@@ -6,9 +6,13 @@ import { BsArrowsAngleExpand } from 'react-icons/bs';
 import { AiFillCloseCircle } from 'react-icons/ai';
 
 const Categories = () => {
-  const { responseCategories, getProductsFromCategoryAndQuery } =
+  const { responseCategories, getProductsFromCategoryAndQuery, getCategories } =
     useContext(GlobalContext);
   const [searchByCategorie, setSearchByCategorie] = useState(false);
+
+  React.useEffect(() => {
+    getCategories();
+  }, []);
 
   return (
     <S.Categories>
